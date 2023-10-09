@@ -1,0 +1,222 @@
+LIBRARY winmm.dll
+
+EXPORTS
+     ; Exports used in Windows 7, 8.1 and 10
+     CloseDriver = jmp_CloseDriver @3
+     DefDriverProc = jmp_DefDriverProc @4
+     DriverCallback = jmp_DriverCallback @5
+     DrvGetModuleHandle = jmp_DrvGetModuleHandle @6
+     GetDriverModuleHandle = jmp_GetDriverModuleHandle @7
+     OpenDriver = jmp_OpenDriver @8
+     PlaySound = jmp_PlaySound @9
+     PlaySoundA = jmp_PlaySoundA @10
+     PlaySoundW = jmp_PlaySoundW @11
+     SendDriverMessage = jmp_SendDriverMessage @12
+     WOWAppExit = jmp_WOWAppExit @13
+     ;auxGetDevCapsA = jmp_auxGetDevCapsA @14
+     auxGetDevCapsW = jmp_auxGetDevCapsW @15
+     ;auxGetNumDevs = jmp_auxGetNumDevs @16
+     ;auxGetVolume = jmp_auxGetVolume @17
+     auxOutMessage = jmp_auxOutMessage @18
+     ;auxSetVolume = jmp_auxSetVolume @19
+     joyConfigChanged = jmp_joyConfigChanged @20
+     joyGetDevCapsA = jmp_joyGetDevCapsA @21
+     joyGetDevCapsW = jmp_joyGetDevCapsW @22
+     joyGetNumDevs = jmp_joyGetNumDevs @23
+     joyGetPos = jmp_joyGetPos @24
+     joyGetPosEx = jmp_joyGetPosEx @25
+     joyGetThreshold = jmp_joyGetThreshold @26
+     joyReleaseCapture = jmp_joyReleaseCapture @27
+     joySetCapture = jmp_joySetCapture @28
+     joySetThreshold = jmp_joySetThreshold @29
+     mciDriverNotify = jmp_mciDriverNotify @30
+     mciDriverYield = jmp_mciDriverYield @31
+     mciExecute = jmp_mciExecute @32
+     mciFreeCommandResource = jmp_mciFreeCommandResource @33
+     mciGetCreatorTask = jmp_mciGetCreatorTask @34
+     mciGetDeviceIDA = jmp_mciGetDeviceIDA @35
+     mciGetDeviceIDFromElementIDA = jmp_mciGetDeviceIDFromElementIDA @36
+     mciGetDeviceIDFromElementIDW = jmp_mciGetDeviceIDFromElementIDW @37
+     mciGetDeviceIDW = jmp_mciGetDeviceIDW @38
+     mciGetDriverData = jmp_mciGetDriverData @39
+     mciGetErrorStringA = jmp_mciGetErrorStringA @40
+     mciGetErrorStringW = jmp_mciGetErrorStringW @41
+     mciGetYieldProc = jmp_mciGetYieldProc @42
+     mciLoadCommandResource = jmp_mciLoadCommandResource @43
+     ;mciSendCommandA = jmp_mciSendCommandA @44
+     mciSendCommandW = jmp_mciSendCommandW @45
+     mciSendStringA = jmp_mciSendStringA @46
+     mciSendStringW = jmp_mciSendStringW @47
+     mciSetDriverData = jmp_mciSetDriverData @48
+     mciSetYieldProc = jmp_mciSetYieldProc @49
+     midiConnect = jmp_midiConnect @50
+     midiDisconnect = jmp_midiDisconnect @51
+     midiInAddBuffer = jmp_midiInAddBuffer @52
+     midiInClose = jmp_midiInClose @53
+     midiInGetDevCapsA = jmp_midiInGetDevCapsA @54
+     midiInGetDevCapsW = jmp_midiInGetDevCapsW @55
+     midiInGetErrorTextA = jmp_midiInGetErrorTextA @56
+     midiInGetErrorTextW = jmp_midiInGetErrorTextW @57
+     midiInGetID = jmp_midiInGetID @58
+     midiInGetNumDevs = jmp_midiInGetNumDevs @59
+     midiInMessage = jmp_midiInMessage @60
+     midiInOpen = jmp_midiInOpen @61
+     midiInPrepareHeader = jmp_midiInPrepareHeader @62
+     midiInReset = jmp_midiInReset @63
+     midiInStart = jmp_midiInStart @64
+     midiInStop = jmp_midiInStop @65
+     midiInUnprepareHeader = jmp_midiInUnprepareHeader @66
+     midiOutCacheDrumPatches = jmp_midiOutCacheDrumPatches @67
+     midiOutCachePatches = jmp_midiOutCachePatches @68
+     midiOutClose = jmp_midiOutClose @69
+     midiOutGetDevCapsA = jmp_midiOutGetDevCapsA @70
+     midiOutGetDevCapsW = jmp_midiOutGetDevCapsW @71
+     midiOutGetErrorTextA = jmp_midiOutGetErrorTextA @72
+     midiOutGetErrorTextW = jmp_midiOutGetErrorTextW @73
+     midiOutGetID = jmp_midiOutGetID @74
+     midiOutGetNumDevs = jmp_midiOutGetNumDevs @75
+     midiOutGetVolume = jmp_midiOutGetVolume @76
+     midiOutLongMsg = jmp_midiOutLongMsg @77
+     midiOutMessage = jmp_midiOutMessage @78
+     midiOutOpen = jmp_midiOutOpen @79
+     midiOutPrepareHeader = jmp_midiOutPrepareHeader @80
+     midiOutReset = jmp_midiOutReset @81
+     midiOutSetVolume = jmp_midiOutSetVolume @82
+     midiOutShortMsg = jmp_midiOutShortMsg @83
+     midiOutUnprepareHeader = jmp_midiOutUnprepareHeader @84
+     midiStreamClose = jmp_midiStreamClose @85
+     midiStreamOpen = jmp_midiStreamOpen @86
+     midiStreamOut = jmp_midiStreamOut @87
+     midiStreamPause = jmp_midiStreamPause @88
+     midiStreamPosition = jmp_midiStreamPosition @89
+     midiStreamProperty = jmp_midiStreamProperty @90
+     midiStreamRestart = jmp_midiStreamRestart @91
+     midiStreamStop = jmp_midiStreamStop @92
+     mixerClose = jmp_mixerClose @93
+     mixerGetControlDetailsA = jmp_mixerGetControlDetailsA @94
+     mixerGetControlDetailsW = jmp_mixerGetControlDetailsW @95
+     mixerGetDevCapsA = jmp_mixerGetDevCapsA @96
+     mixerGetDevCapsW = jmp_mixerGetDevCapsW @97
+     mixerGetID = jmp_mixerGetID @98
+     mixerGetLineControlsA = jmp_mixerGetLineControlsA @99
+     mixerGetLineControlsW = jmp_mixerGetLineControlsW @100
+     mixerGetLineInfoA = jmp_mixerGetLineInfoA @101
+     mixerGetLineInfoW = jmp_mixerGetLineInfoW @102
+     mixerGetNumDevs = jmp_mixerGetNumDevs @103
+     mixerMessage = jmp_mixerMessage @104
+     mixerOpen = jmp_mixerOpen @105
+     mixerSetControlDetails = jmp_mixerSetControlDetails @106
+     mmDrvInstall = jmp_mmDrvInstall @107
+     mmGetCurrentTask = jmp_mmGetCurrentTask @108
+     mmTaskBlock = jmp_mmTaskBlock @109
+     mmTaskCreate = jmp_mmTaskCreate @110
+     mmTaskSignal = jmp_mmTaskSignal @111
+     mmTaskYield = jmp_mmTaskYield @112
+     mmioAdvance = jmp_mmioAdvance @113
+     mmioAscend = jmp_mmioAscend @114
+     mmioClose = jmp_mmioClose @115
+     mmioCreateChunk = jmp_mmioCreateChunk @116
+     mmioDescend = jmp_mmioDescend @117
+     mmioFlush = jmp_mmioFlush @118
+     mmioGetInfo = jmp_mmioGetInfo @119
+     mmioInstallIOProcA = jmp_mmioInstallIOProcA @120
+     mmioInstallIOProcW = jmp_mmioInstallIOProcW @121
+     mmioOpenA = jmp_mmioOpenA @122
+     mmioOpenW = jmp_mmioOpenW @123
+     mmioRead = jmp_mmioRead @124
+     mmioRenameA = jmp_mmioRenameA @125
+     mmioRenameW = jmp_mmioRenameW @126
+     mmioSeek = jmp_mmioSeek @127
+     mmioSendMessage = jmp_mmioSendMessage @128
+     mmioSetBuffer = jmp_mmioSetBuffer @129
+     mmioSetInfo = jmp_mmioSetInfo @130
+     mmioStringToFOURCCA = jmp_mmioStringToFOURCCA @131
+     mmioStringToFOURCCW = jmp_mmioStringToFOURCCW @132
+     mmioWrite = jmp_mmioWrite @133
+     mmsystemGetVersion = jmp_mmsystemGetVersion @134
+     sndPlaySoundA = jmp_sndPlaySoundA @135
+     sndPlaySoundW = jmp_sndPlaySoundW @136
+     timeBeginPeriod = jmp_timeBeginPeriod @137
+     timeEndPeriod = jmp_timeEndPeriod @138
+     timeGetDevCaps = jmp_timeGetDevCaps @139
+     timeGetSystemTime = jmp_timeGetSystemTime @140
+     timeGetTime = jmp_timeGetTime @141
+     timeKillEvent = jmp_timeKillEvent @142
+     timeSetEvent = jmp_timeSetEvent @143
+     waveInAddBuffer = jmp_waveInAddBuffer @144
+     waveInClose = jmp_waveInClose @145
+     waveInGetDevCapsA = jmp_waveInGetDevCapsA @146
+     waveInGetDevCapsW = jmp_waveInGetDevCapsW @147
+     waveInGetErrorTextA = jmp_waveInGetErrorTextA @148
+     waveInGetErrorTextW = jmp_waveInGetErrorTextW @149
+     waveInGetID = jmp_waveInGetID @150
+     waveInGetNumDevs = jmp_waveInGetNumDevs @151
+     waveInGetPosition = jmp_waveInGetPosition @152
+     waveInMessage = jmp_waveInMessage @153
+     waveInOpen = jmp_waveInOpen @154
+     waveInPrepareHeader = jmp_waveInPrepareHeader @155
+     waveInReset = jmp_waveInReset @156
+     waveInStart = jmp_waveInStart @157
+     waveInStop = jmp_waveInStop @158
+     waveInUnprepareHeader = jmp_waveInUnprepareHeader @159
+     waveOutBreakLoop = jmp_waveOutBreakLoop @160
+     waveOutClose = jmp_waveOutClose @161
+     waveOutGetDevCapsA = jmp_waveOutGetDevCapsA @162
+     waveOutGetDevCapsW = jmp_waveOutGetDevCapsW @163
+     waveOutGetErrorTextA = jmp_waveOutGetErrorTextA @164
+     waveOutGetErrorTextW = jmp_waveOutGetErrorTextW @165
+     waveOutGetID = jmp_waveOutGetID @166
+     waveOutGetNumDevs = jmp_waveOutGetNumDevs @167
+     waveOutGetPitch = jmp_waveOutGetPitch @168
+     waveOutGetPlaybackRate = jmp_waveOutGetPlaybackRate @169
+     waveOutGetPosition = jmp_waveOutGetPosition @170
+     waveOutGetVolume = jmp_waveOutGetVolume @171
+     waveOutMessage = jmp_waveOutMessage @172
+     waveOutOpen = jmp_waveOutOpen @173
+     waveOutPause = jmp_waveOutPause @174
+     waveOutPrepareHeader = jmp_waveOutPrepareHeader @175
+     waveOutReset = jmp_waveOutReset @176
+     waveOutRestart = jmp_waveOutRestart @177
+     waveOutSetPitch = jmp_waveOutSetPitch @178
+     waveOutSetPlaybackRate = jmp_waveOutSetPlaybackRate @179
+     waveOutSetVolume = jmp_waveOutSetVolume @180
+     waveOutUnprepareHeader = jmp_waveOutUnprepareHeader @181
+     waveOutWrite = jmp_waveOutWrite @182
+
+     ; Wrapped exports
+     mciSendCommandA = wrap_mciSendCommandA @44
+     ;mciSendStringA = wrap_mciSendStringA @46
+     auxGetNumDevs = wrap_auxGetNumDevs @16
+     auxGetDevCapsA = wrap_auxGetDevCapsA @14
+     auxGetVolume = wrap_auxGetVolume @17
+     auxSetVolume = wrap_auxSetVolume @19
+
+     ; The following exports are used by libzplay. They MUST NOT be wrapped!
+     ; mixerClose
+     ; mixerGetControlDetailsA
+     ; mixerGetDevCapsA
+     ; mixerGetLineControlsA
+     ; mixerGetLineInfoA
+     ; mixerOpen
+     ; mixerSetControlDetails
+     ; waveInAddBuffer
+     ; waveInClose
+     ; waveInGetDevCapsA
+     ; waveInGetNumDevs
+     ; waveInOpen
+     ; waveInPrepareHeader
+     ; waveInReset
+     ; waveInStart
+     ; waveInUnprepareHeader
+     ; waveOutClose
+     ; waveOutGetDevCapsA
+     ; waveOutGetNumDevs
+     ; waveOutGetVolume
+     ; waveOutOpen
+     ; waveOutPause
+     ; waveOutPrepareHeader
+     ; waveOutReset
+     ; waveOutRestart
+     ; waveOutSetVolume
+     ; waveOutUnprepareHeader
+     ; waveOutWrite
