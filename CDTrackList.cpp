@@ -22,7 +22,7 @@ CDTrackList::CDTrackList(
 
     // find files in music directory
     std::string basePath = std::string(modulePath) + '\\' + path + '\\';
-    std::string findPath = basePath + "*";
+    std::string findPath = basePath + "*.flac";
 
     WIN32_FIND_DATA fdata;
     HANDLE hFind = FindFirstFile(findPath.c_str(), &fdata);
