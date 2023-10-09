@@ -96,9 +96,6 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
                 sprintf_s(dllPath, sizeof(dllPath), "%s\\winmm.dll", sysDir);
 
                 hinstDLL = LoadLibrary(dllPath);
-                if (!hinstDLL) {
-                    throw std::runtime_error("Can't load system WinMM.dll!");
-                }
 
                 for (size_t i = 0; i < exportCount; i++) {
                     exportProcs[i] = GetProcAddress(hinstDLL, exportNames[i]);
