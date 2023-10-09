@@ -1,6 +1,15 @@
 #include "CDPlayer.hpp"
 #include "Logger.hpp"
 #include "WinMMError.hpp"
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+
+bool is_number(const std::string& s)
+{
+	return(strspn(s.c_str(), "0123456789") == s.size());
+}
 
 CDPlayer::CDPlayer()
     : m_player(CreateZPlay())
@@ -273,6 +282,19 @@ void CDPlayer::play(int32_t from, int32_t to)
 
         const CDTrack& track = m_tracks.get(i);
 
+		fstream file;
+		string volumeContents;
+		file.open("volumeBGM.txt", ios::in);
+		if (file) {
+			file >> volumeContents;
+			if (is_number(volumeContents)){
+				int volumeInt = stoi(volumeContents);
+				if (volumeInt >= 0 && volumeInt <= 100) {
+					m_player->SetPlayerVolume(volumeInt, volumeInt);
+				}
+			}	
+		}
+		
         // add file to queue
         if (!m_player->AddFile(track.path.c_str(), track.format)) {
             throw WinMMError(m_player->GetError(), MCIERR_HARDWARE);
