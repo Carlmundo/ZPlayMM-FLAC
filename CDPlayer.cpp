@@ -139,7 +139,7 @@ CDPlayer::CDPlayer()
 {
     m_player->SetCallbackFunc(&callback, MsgStop, this);
 
-        // Gets the current working directory, and creates a path containing it and the volumeBGM.txt file that we want to monitor for changes
+    // Gets the current working directory, and creates a path containing it and the volumeBGM.txt file that we want to monitor for changes
     wchar_t directoryPath[1024];
     _wgetcwd(directoryPath, sizeof(directoryPath) / sizeof(directoryPath[0]));
     wchar_t* targetFileName = L"volumeBGM.txt";
