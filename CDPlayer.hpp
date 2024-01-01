@@ -47,6 +47,11 @@ public:
     void seekEnd();
     void seekTo(int32_t to);
 
+    // worms 2 plus extension
+    void loadVolume();
+    void MonitorDirectoryThread(struct ThreadData* data);
+    void MonitorDirectory(wchar_t* directoryPath, wchar_t* targetFileName);
+
 private:
     ZPlay* m_player;
     CDTrackList m_tracks;
