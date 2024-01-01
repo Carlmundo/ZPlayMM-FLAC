@@ -1,16 +1,7 @@
 #include "CDPlayer.hpp"
 #include "Logger.hpp"
 #include "WinMMError.hpp"
-#include <iostream>
-#include <fstream>
-#include <string.h>
 #include <thread>
-using namespace std;
-
-bool is_number(const std::string& s)
-{
-	return(strspn(s.c_str(), "0123456789") == s.size());
-}
 
 void CDPlayer::loadVolume()
 {
