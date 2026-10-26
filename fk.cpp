@@ -41,47 +41,6 @@ std::basic_string<TChar> GetStringFromWindowsApi(TStringGetterFunc stringGetter,
 	}
 }
 
-// Helper function to retrieve the "Original Filename" from an executable
-std::string GetOriginalFilename(const std::string& filePath) {
-	DWORD handle = 0;
-	DWORD size = GetFileVersionInfoSize(filePath.c_str(), &handle);
-
-	if (size == 0) {
-		return "";
-	}
-
-	std::vector<BYTE> versionInfo(size);
-	if (!GetFileVersionInfo(filePath.c_str(), handle, size, versionInfo.data())) {
-		return "";
-	}
-
-	VS_FIXEDFILEINFO* fixedFileInfo = nullptr;
-	UINT length = 0;
-	if (!VerQueryValue(versionInfo.data(), "\\", (LPVOID*)&fixedFileInfo, &length)) {
-		return "";
-	}
-
-	struct LANGANDCODEPAGE {
-		WORD wLanguage;
-		WORD wCodePage;
-	} *translate;
-
-	if (!VerQueryValue(versionInfo.data(), "\\VarFileInfo\\Translation", (LPVOID*)&translate, &length)) {
-		return "";
-	}
-
-	// Build the query path to retrieve the original filename
-	char subBlock[50];
-	sprintf_s(subBlock, "\\StringFileInfo\\%04x%04x\\OriginalFilename", translate[0].wLanguage, translate[0].wCodePage);
-
-	char* originalFilename = nullptr;
-	if (!VerQueryValue(versionInfo.data(), subBlock, (LPVOID*)&originalFilename, &length)) {
-		return "";
-	}
-
-	return std::string(originalFilename, length - 1);
-}
-
 std::string GetErrorMessage(DWORD errorCode) {
 	// Buffer to hold the formatted error message
 	char buffer[256];
@@ -113,12 +72,6 @@ void fkAttachReal()
 
 			return GetModuleFileName(module, buffer, size);
 		});
-
-	std::string ogFilename = GetOriginalFilename(moduleName);
-
-	//Abort if it wasn't the frontend that loaded us
-	if (_strcmpi(ogFilename.c_str(), "FRONTEND.EXE") != 0)
-		return;
 
 	// Get executable directory.
 	CHAR buffer[MAX_PATH];
