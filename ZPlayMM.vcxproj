@@ -43,7 +43,7 @@
     <LibraryPath>$(SolutionDir)libzplay\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)build\$(Configuration)\</IntDir>
-    <TargetName>win32</TargetName>
+    <TargetName>winmm</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

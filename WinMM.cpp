@@ -9,6 +9,8 @@
 WinMM::WinMM()
     : m_mciSendCommandA(nullptr)
     , m_mciSendStringA(nullptr)
+    , m_player(nullptr)
+    , m_timeFormat(MCI_FORMAT_TMSF)
 {
 }
 
@@ -122,6 +124,7 @@ MCIERROR WinMM::commandSet(DWORD_PTR fdwCommand, LPMCI_SET_PARMS dwParam)
                 return MMSYSERR_INVALPARAM;
         }
 
+        m_timeFormat = dwParam->dwTimeFormat;
         m_player->setTimeFormat(dwParam->dwTimeFormat);
     }
 
@@ -296,14 +299,16 @@ MCIERROR WinMM::mciSendCommandA(
         IDDevice, uMsg, fdwCommand, dwParam);
 
     if (uMsg != MCI_OPEN) {
-        if (IDDevice != m_player->getDeviceID()) {
+        if (IDDevice == 0) {
+            // The Worms 2 frontend addresses its CD device as 0 and never
+            // sends MCI_OPEN. Create the virtual drive on its first request.
+            if (!m_player) {
+                m_player = new CDPlayer();
+            }
+            IDDevice = m_player->getDeviceID();
+        } else if (!m_player || IDDevice != m_player->getDeviceID()) {
             // command is not for our device
             return m_mciSendCommandA(IDDevice, uMsg, fdwCommand, dwParam);
-        }
-
-        if (!m_player) {
-            // device hasn't been opened yet
-            return MCIERR_INVALID_DEVICE_NAME;
         }
     }
 

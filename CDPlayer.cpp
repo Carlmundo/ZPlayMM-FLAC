@@ -126,6 +126,7 @@ CDPlayer::CDPlayer()
     : m_player(CreateZPlay())
     , m_tracks("music", "Track", m_player)
     , m_currentTrack(1)
+    , m_timeFormat(MCI_FORMAT_TMSF)
     , m_notifyMessage(0)
 {
     m_player->SetCallbackFunc(&callback, MsgStop, this);
