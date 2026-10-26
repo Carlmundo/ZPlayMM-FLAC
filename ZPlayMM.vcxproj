@@ -94,6 +94,7 @@
     <ClCompile Include="WinMM.cpp" />
     <ClCompile Include="WinMMError.cpp" />
     <ClCompile Include="ZPlayMM.cpp" />
+    <ClCompile Include="fk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="winmm.def" />
@@ -106,6 +107,7 @@
     <ClInclude Include="WinMM.hpp" />
     <ClInclude Include="WinMMError.hpp" />
     <ClInclude Include="ZPlayMM.hpp" />
+    <ClInclude Include="fk.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ZPlayMM.rc" />

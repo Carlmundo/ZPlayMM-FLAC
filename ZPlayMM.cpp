@@ -1,4 +1,5 @@
 #include "ZPlayMM.hpp"
+#include "fk.hpp"
 #include "Logger.hpp"
 #include "WinMM.hpp"
 #include "WinMMError.hpp"
@@ -82,6 +83,24 @@ MCIERROR HandleException()
     }
 }
 
+static const DWORD timestampFrontendPlus = 898088473UL;
+static BOOL g_fkEnabled = FALSE;
+
+static BOOL IsFrontendPlus()
+{
+    HMODULE executable = GetModuleHandle(NULL);
+    if (executable == NULL) return FALSE;
+
+    const IMAGE_DOS_HEADER* dos = reinterpret_cast<const IMAGE_DOS_HEADER*>(executable);
+    if (dos->e_magic != IMAGE_DOS_SIGNATURE || dos->e_lfanew <= 0) return FALSE;
+
+    const IMAGE_NT_HEADERS* nt = reinterpret_cast<const IMAGE_NT_HEADERS*>(
+        reinterpret_cast<const BYTE*>(executable) + dos->e_lfanew);
+    if (nt->Signature != IMAGE_NT_SIGNATURE) return FALSE;
+
+    return nt->FileHeader.TimeDateStamp == timestampFrontendPlus;
+}
+
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
     try {
@@ -115,10 +134,18 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 
                 winmm.load(hinstDLL);
 
+                g_fkEnabled = IsFrontendPlus();
+                if (g_fkEnabled) {
+                    fkAttach();
+                }
+
                 break;
             }
 
             case DLL_PROCESS_DETACH: {
+                if (g_fkEnabled) {
+                    fkDetach();
+                }
                 if (hinstDLL) {
                     FreeLibrary(hinstDLL);
                 }

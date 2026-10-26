@@ -36,6 +36,9 @@
     <ClCompile Include="ZPlayMM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMM.hpp">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ZPlayMM.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fk.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
