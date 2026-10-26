@@ -6,11 +6,9 @@ typedef struct IUnknown IUnknown;
 #include <vector>
 #include <Windows.h>
 #include <winver.h>
-
 #pragma comment(lib, "version.lib")
 
 std::vector<HMODULE> modules;
-
 BOOL attached = false;
 
 template <typename TChar, typename TStringGetterFunc>
@@ -69,7 +67,6 @@ void fkAttachReal()
 	auto moduleName = GetStringFromWindowsApi<TCHAR>([](TCHAR* buffer, int size)
 		{
 			HMODULE module = GetModuleHandle(NULL);
-
 			return GetModuleFileName(module, buffer, size);
 		});
 
